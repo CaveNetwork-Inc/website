@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}forums{% endblock %}
+
+{% block body %}
+    <main>
+        <ol class="breadcrumb">
+            <li><a href="{{ path('homepage') }}"><span>home</span></a></li>
+            <li><span>forums</span></li>
+        </ol>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    {#<h2>cavenetwork forums</h2>#}
+                    <section>
+                        {% for node in nodes %}
+                            {% if node.permission == '' or is_granted(node.permission) %}
+                                <article class="panel panel-warning forum-node">
+                                    <div class="panel-heading">
+                                        <h3 class="panel-title">{{ node.name }}</h3>
+                                    </div>
+                                    <div class="panel-body">
+                                        <ul class="nav nav-pills nav-stacked">
+                                            {% for category in node.categories %}
+                                                <li>
+                                                    <a href="#">
+                                                        <i class="fal fa-comments fa-forum-box text-warning"></i>
+                                                        <div class="category-content">
+                                                            <div class="category-title text-warning">
+                                                                <h4>{{ category.name }}</h4>
+                                                                <p>{{ category.description }}</p>
+                                                            </div>
+                                                            <div class="category-meta-data text-warning pull-right">
+                                                                <p>Lorem ipsum dollar sith...</p>
+                                                                <p>By <b>g.le.grand</b>, {{ 'now'|date('d/m/Y') }}</p>
+                                                            </div>
+                                                            <div class="category-stats text-warning pull-right">
+                                                                <p class="text-center pull-left"><strong>{{category.threads|length }}</strong>Topics</p>
+                                                                {% set counter = 0 %}
+                                                                {% for t in category.threads %}
+                                                                {% set counter = counter + t.comments|length %}
+                                                                {% endfor %}
+                                                                <p class="text-center pull-right"><strong>{{ counter }}</strong>Posts</p>
+                                                            </div>
+                                                        </div>
+                                                    </a></li>
+                                            {% endfor %}
+                                        </ul>
+                                    </div>
+                                </article>
+                            {% endif %}
+                        {% endfor %}
+                    </section>
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock %}

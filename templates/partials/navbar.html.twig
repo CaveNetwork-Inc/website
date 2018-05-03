@@ -1,0 +1,64 @@
+<nav class="navbar navbar-default" style="margin:0;">
+    <div class="container">
+        <div class="navbar-header" style="position:absolute;left:50%;margin-left:-70px;width:140px;"><a
+                    class="navbar-brand text-capitalize" href="{{ path('homepage') }}"><strong>Cave</strong>Network</a>
+            <button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navcol-1"><span
+                        class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span
+                        class="icon-bar"></span><span class="icon-bar"></span></button>
+        </div>
+        <div class="collapse navbar-collapse" id="navcol-1">
+            <form class="navbar-form navbar-right">
+                <div class="form-group">
+                    <div class="input-group"><input class="form-control input-sm" type="text" name="player_search"
+                                                    placeholder="Search...">
+                        <div class="input-group-btn">
+                            <button class="btn btn-default btn-sm" type="button"><i class="fa fa-search text-info"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                        <div class="dropdown">
+                            <a href="#" data-toggle="dropdown" class="dropdown-toggle btn btn-default"
+                               style="background:none;border:none;">
+                                <i class="fas fa-user-circle"></i> {{ app.user.username }} <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-right">
+                                <li class="dropdown-header">Profile Management</li>
+                                <li><a href="#"><i class="fas fa-key fa-fw"></i> Change Password</a></li>
+                                <li><a href="#"><i class="fas fa-user fa-fw"></i> My Account</a></li>
+                                <li><a href="#"><i class="fas fa-gamepad fa-fw"></i> Games</a></li>
+                                <li class="divider"></li>
+                                {% if is_granted('ROLE_SERVER_STAFF') %}
+                                    <li class="dropdown-header">Website Management</li>
+                                    <li><a href="{{ path('user_management') }}"><i class="fas fa-users fa-fw"></i> User Management</a></li>
+                                    <li><a href="#"><i class="fas fa-gamepad fa-fw"></i> Game Management</a></li>
+                                    <li><a href="#"><i class="fas fa-comments fa-fw"></i> Forum Management</a></li>
+                                    <li><a href="#"><i class="fas fa-server fa-fw"></i> Website Management</a></li>
+                                    <li class="divider"></li>
+                                {% endif %}
+                                {% if is_granted('ROLE_PREVIOUS_ADMIN') %}
+                                    <li><a href="{{ path('user_management', {'_switch_user': '_exit'}) }}"><i class="fas fa-sign-out fa-fw"></i> Back to user management</a></li>
+                                {% else %}
+                                    <li><a href="{{ path('logout') }}"><i class="fas fa-sign-out fa-fw"></i> Logout</a></li>
+                                {% endif %}
+
+                            </ul>
+                        </div>
+                    {% else %}
+                        <a class="btn btn-default" role="button" href="{{ path('login') }}"
+                           style="background:none;border:none;">Login</a>
+                        <a href="{{ path('register') }}" class="btn btn-default" role="button"
+                           style="background:none;border:none;">Register</a>
+                    {% endif %}
+                </div>
+            </form>
+            <ul class="nav navbar-nav navbar-left">
+                <li role="presentation"><a href="#"><i class="fas fa-shopping-cart fa-fw"></i>&nbsp;Store</a></li>
+                <li role="presentation"><a href="{{ path('forums') }}"><i class="fas fa-comments fa-fw"></i>&nbsp;Forums</a></li>
+                <li role="presentation"><a href="#"><i class="fas fa-signal fa-fw"></i>&nbsp;Leaderboards</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>

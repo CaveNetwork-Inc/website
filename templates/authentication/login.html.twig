@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Login{% endblock %}
+{% block body %}
+    {% if error %}
+        <div class="hidden" id="login_error">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+    {% endif %}
+    <main class="container-fluid">
+        <form action="{{ path('login') }}" data-form-type="login" method="post" class="col-xs-12 col-md-4 col-md-offset-4">
+            <h2 class="text-center">
+                <bold>Cave</bold>
+                Network Login
+            </h2>
+            <label for="_username">Username</label>
+            <input type="text" class="form-control" name="_username" value="{{ last_username|default(null) }}">
+            <label for="_password">Password</label>
+            <input type="password" class="form-control" name="_password">
+            <button class="btn btn-warning" style="margin-top: 15px">Login</button>
+        </form>
+    </main>
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        (() => {
+            {% if error %}
+            var error = '{{ error.messageKey|trans(error.messageData, 'security') }}';
+            show_notification(error, 'danger');
+        {% endif %}
+        })();
+    </script>
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}user management{% endblock %}
+
+{% block body %}
+    <main class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="table-responsive">
+                    <table class="table table-hover table-condensed table-striped">
+                        <thead>
+                        <tr>
+                            <th>username (nickname)</th>
+                            <th>email</th>
+                            <th>role</th>
+                            <th>active</th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for user in users if 'role_superuser' not in user.roles|join(',') %}
+                            <tr>
+                                <td>{{ user.username }} {{ user.nickname ? "(#{user.nickname})" : '' }}</td>
+                                <td>{{ user.email }}</td>
+                                <td>{{ user.roles|join(',') }}</td>
+                                <td>{{ user.isactive ? 'true' : 'false' }}</td>
+                                <td>
+                                    <span class="pull-right">
+                                        <a href="" class="text-warning"><i class="fas fa-edit fa-fw"></i></a>
+                                        <a href="{{ path('homepage', {'_switch_user': user.username }) }}" class="text-success"><i class="fas fa-sign-in-alt fa-fw"></i></a>
+                                        <a href="" class="text-danger"><i class="fas fa-user-times"></i></a>
+                                    </span>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock %}

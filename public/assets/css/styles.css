@@ -1,4 +1,219 @@
-.navbar.navbar-inverse {
-  margin-bottom:0;
+.top-background {
+    height: 100%;
+    background-image: url(../../assets/img/cavenetwork.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 1;
+    opacity: 0.8;
 }
 
+.top-background .container .row div[class^="col-"] {
+    height: 240px;
+    line-height: 240px;
+}
+
+.current_players_online {
+    background: rgba(0, 0, 0, 0.9);
+    border-radius: 3px;
+    display: block;
+    height: 31px;
+    line-height: 25px;
+    margin-top: calc(calc(50% - calc(25px / 2)) - 8px);
+    color: white;
+    padding: 5px;
+    text-align: center;
+}
+
+.main-content {
+    min-height: calc(100% - 292px);
+    height: auto;
+}
+
+main .contrailer .row .col-md-2 .jumbotron {
+    height: 16.66666667%;
+}
+
+.news small.meta-info {
+    position: relative;
+    top: -15px;
+    left: 2px;
+}
+
+.news p.post-content {
+    position: relative;
+    top: -11px;
+}
+
+.news a.btn-default {
+}
+
+.news .content {
+}
+
+.top-article {
+    height: 240px;
+    margin-bottom: 20px;
+}
+
+.news > .jumbotron {
+    padding: 15px 50px;
+}
+
+.news > .jumbotron > p {
+    font-size: 17px;
+}
+
+.game-container .panel-body {
+    text-align: center;
+}
+
+.game-container .panel-body strong {
+    display: block;
+}
+
+footer {
+    background-color: #f8f8f8;
+    border-top: 1px solid #e7e7e7;
+}
+
+footer .well {
+    background-color: transparent;
+    border: none;
+}
+
+footer .well .navbar {
+    background: none;
+    border: none;
+    margin-bottom: 0;
+    height: 100%;
+    /*padding:0;*/
+    /*width:100%;*/
+}
+
+footer .container {
+    padding: 0;
+}
+
+#navcol-3 {
+    padding: 0;
+}
+
+footer .container-fluid {
+    padding: 0;
+}
+
+footer .well {
+    margin-bottom: 0;
+}
+
+footer .col-md-3:first-child .well {
+    padding-left: 0;
+}
+
+footer .col-md-6 .well {
+    padding-right: 0;
+}
+
+main {
+    min-height: calc(100vh - 171px);
+    height: auto;
+    position: relative;
+}
+
+form[data-form-type="login"], form[data-form-type="register"] {
+    position: absolute;
+    top: 50%;
+}
+
+form[data-form-type="login"] {
+    height: 300px;
+    margin-top: -150px;
+}
+
+.forum-node .panel-body{
+    padding: 0;
+}
+
+.forum-node .fa-forum-box {
+    display: inline-block;
+    height: 40px;
+    width: 40px;
+    line-height: 40px;
+    font-size: 25px;
+    text-align: center;
+    border: 2px solid;
+}
+
+.forum-node .forum-category-title {
+    display: inline-block;
+}
+
+.forum-node .category-content {
+    display: inline-block;
+    width: calc(100% - 50px);
+    height: 40px;
+    position: relative;
+    top: 4px;
+    left: 5px;
+}
+
+.forum-node .category-content .category-title {
+    width: 45%;
+    display: inline-block;
+}
+
+.forum-node .category-content .category-title h4 {
+    margin: 0;
+}
+
+.forum-node .category-content .category-title p {
+    top: -4px;
+    position: relative;
+    margin-bottom: 0;
+}
+
+.forum-node .category-content .category-meta-data {
+    width: 175px;
+    display: inline-block;
+}
+
+.forum-node .category-content .category-meta-data p {
+    margin: 0;
+}
+
+.forum-node .category-content .category-meta-data p:last-child {
+    top: -4px;
+    position: relative;
+}
+
+.forum-node .category-content .category-stats {
+    width: 160px;
+}
+
+.forum-node .category-content .category-stats p {
+    display: inline-block;
+    width: 80px;
+    height: 40px;
+}
+
+.forum-node .category-content .category-stats p strong {
+    display: block;
+    margin-bottom: -5px;
+}
+
+.cave-module[data-module-name="leaderboard"] .table-responsive{
+    border: 1px solid #faebcc;
+}
+
+.cave-module[data-module-name="leaderboard"] .table-responsive td {
+    border-top-color: #faebcc;
+}
+
+.table-striped > tbody > tr:nth-of-type(2n+1) {
+    background-color: #fcf8e3
+}
+
+.news .jumbotron {
+    background-color: rgba(252,248,227,0.8);
+}

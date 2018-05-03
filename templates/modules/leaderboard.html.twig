@@ -1,0 +1,12 @@
+<div class="table-responsive">
+    <table class="table table-striped table-hover">
+        <caption>Leaderboard</caption>
+        <tbody>
+        {% for entry in Leaderboard %}
+            <tr>
+                <td>#{{ loop.index }} {{ entry[0].user.nickname?:entry[0].user.username }}<span class="pull-right">{{ entry.score }}</span></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>

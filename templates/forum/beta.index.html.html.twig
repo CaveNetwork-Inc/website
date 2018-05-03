@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}forums{% endblock %}
+
+{% block body %}
+    <main>
+        <ol class="breadcrumb">
+            <li><a href="{{ path('homepage') }}"><span>home</span></a></li>
+            <li><span>forums</span></li>
+        </ol>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    {#<h2>cavenetwork forums</h2>#}
+                    <section>
+                        {% for node in nodes %}
+                            {% if node.permission == '' or is_granted(node.permission) %}
+                                <forum-node class="panel panel-warning">
+                                    <node-heading class="panel-heading">
+                                        <node-title class="panel-title">
+                                            {{ node.name }}
+                                        </node-title>
+                                    </node-heading>
+                                    <node-body class="panel-body">
+                                        <node-categories class="nav nav-pills nav-stacked">
+                                            {% for category in node.categories %}
+                                                <forum-category>
+                                                    <a href="#">
+                                                        <category-icon class="fal fa-comments fa-forum-box"></category-icon>
+                                                        <category-content>
+                                                            <category-title>
+                                                                <h2>{{ category.name }}</h2>
+                                                                <p>{{ category.description }}</p>
+                                                            </category-title>
+                                                        </category-content>
+                                                    </a>
+                                                </forum-category>
+                                            {% endfor %}
+                                        </node-categories>
+                                    </node-body>
+                                </forum-node>
+                            {% endif %}
+                        {% endfor %}
+                    </section>
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock %}

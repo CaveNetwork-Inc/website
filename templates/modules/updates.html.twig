@@ -1,0 +1,12 @@
+<div class="alert alert-warning" role="alert"><span><strong>Recent updates</strong></span></div>
+{% for item in Updates %}
+    <article class="news">
+        <div class="jumbotron">
+            <h2>{{ item.title|bbCode }}</h2>
+            <small class="text-uppercase meta-info">Poster by: <span>{{ item.user.nickname }}</span> on
+                <span>{{ item.createdAt|date('d/m/Y') }} ({{ item.createdAt|date('jS \\o\\f F, Y') }})</span></small>
+            <p style="font-size:17px;">{{ item.message }}</p>
+            {#<p></p>#}
+        </div>
+    </article>
+{% endfor %}
