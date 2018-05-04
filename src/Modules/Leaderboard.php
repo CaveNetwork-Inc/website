@@ -9,24 +9,21 @@
 namespace App\Modules;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Symfony\Component\DependencyInjection\Container;
+use Doctrine\ORM\EntityManager;
 
 /**
  * @Route(service="Leaderboard")
  */
 class Leaderboard
 {
-    private $container;
-    public function __construct(Container $container)
+    private $entityManager;
+    public function __construct(EntityManager $entityManager)
     {
-        $this->container = $container;
+        $this->entityManager = $entityManager;
     }
 
     public function runModule(){
-        $em = $this->container->get('doctrine')->getManager();
-        $twig = $this->container->get('twig');
-
-        $leaderboard = $em->getRepository('App:LeaderboardScore')->getLeaderboard();
+        $leaderboard = $this->entityManager->getRepository('App:LeaderboardScore')->getLeaderboard();
 
         return $leaderboard;
     }

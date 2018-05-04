@@ -9,24 +9,21 @@
 namespace App\Modules;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Symfony\Component\DependencyInjection\Container;
+use Doctrine\ORM\EntityManager;
 
 /**
  * @Route(service="Updates")
  */
 class Updates
 {
-    private $container;
-    public function __construct(Container $container)
+    private $entityManager;
+    public function __construct(EntityManager $entityManager)
     {
-        $this->container = $container;
+        $this->entityManager = $entityManager;
     }
 
     public function runModule(){
-        $em = $this->container->get('doctrine')->getManager();
-        $twig = $this->container->get('twig');
-
-        $updates = $em->getRepository('App:Update')->findBy([],['id' => 'desc'], 2);
+        $updates = $this->entityManager->getRepository('App:Update')->findBy([],['id' => 'desc'], 2);
 
         return $updates;
     }
