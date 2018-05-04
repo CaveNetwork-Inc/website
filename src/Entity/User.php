@@ -43,7 +43,7 @@ class User implements UserInterface
     /**
      * @ORM\Column(name="is_active", type="boolean")
      */
-    private $isActive;
+    private $active;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Thread", mappedBy="author", orphanRemoval=true)
@@ -136,14 +136,14 @@ class User implements UserInterface
     {
     }
 
-    public function getisActive(): ?bool
+    public function getActive(): ?bool
     {
-        return $this->isActive;
+        return $this->active;
     }
 
-    public function setIsActive($isActive): self
+    public function setActive($active): self
     {
-        $this->isActive = $isActive;
+        $this->active = $active;
         return $this;
     }
 
