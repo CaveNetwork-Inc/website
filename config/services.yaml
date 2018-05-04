@@ -30,7 +30,3 @@ services:
         resource: '../src/Modules'
         public: true
         arguments: ["@doctrine.orm.entity_manager"]
-#    Leaderboard:
-#        public: true
-#        class: App\Modules\Leaderboard
-#        arguments: ['@service_container']
