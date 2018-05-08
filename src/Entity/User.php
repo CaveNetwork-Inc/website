@@ -38,12 +38,12 @@ class User implements UserInterface
     /**
      * @ORM\Column(type="array", length=255)
      */
-    private $roles;
+    private $roles = ['ROLE_USER'];
 
     /**
      * @ORM\Column(name="is_active", type="boolean")
      */
-    private $active;
+    private $active = true;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Thread", mappedBy="author", orphanRemoval=true)

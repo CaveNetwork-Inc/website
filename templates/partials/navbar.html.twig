@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default" style="margin:0;">
+<nav class="navbar navbar-default">
     <div class="container">
         <div class="navbar-header" style="position:absolute;left:50%;margin-left:-70px;width:140px;"><a
                     class="navbar-brand text-capitalize" href="{{ path('homepage') }}"><strong>Cave</strong>Network</a>
@@ -55,9 +55,9 @@
                 </div>
             </form>
             <ul class="nav navbar-nav navbar-left">
-                <li role="presentation"><a href="#"><i class="fas fa-shopping-cart fa-fw"></i>&nbsp;Store</a></li>
+                {% if is_granted('ROLE_DEVELOPER') %}<li role="presentation"><a href="#"><i class="fas fa-shopping-cart fa-fw"></i>&nbsp;Store</a></li>
                 <li role="presentation"><a href="{{ path('forums') }}"><i class="fas fa-comments fa-fw"></i>&nbsp;Forums</a></li>
-                <li role="presentation"><a href="#"><i class="fas fa-signal fa-fw"></i>&nbsp;Leaderboards</a></li>
+                <li role="presentation"><a href="#"><i class="fas fa-signal fa-fw"></i>&nbsp;Leaderboards</a></li>{% endif %}
             </ul>
         </div>
     </div>

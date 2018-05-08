@@ -1,3 +1,14 @@
+html, body {
+    min-height: 100vh;
+    width: 100vw;
+    height: auto;
+    position: absolute;
+}
+
+.navbar {
+    margin-bottom: 0;
+}
+
 .top-background {
     height: 100%;
     background-image: url(../../assets/img/cavenetwork.png);
@@ -30,7 +41,7 @@
     height: auto;
 }
 
-main .contrailer .row .col-md-2 .jumbotron {
+main .container .row .col-md-2 .jumbotron {
     height: 16.66666667%;
 }
 
@@ -75,6 +86,7 @@ main .contrailer .row .col-md-2 .jumbotron {
 footer {
     background-color: #f8f8f8;
     border-top: 1px solid #e7e7e7;
+    height:100px;
 }
 
 footer .well {
@@ -85,7 +97,6 @@ footer .well {
 footer .well .navbar {
     background: none;
     border: none;
-    margin-bottom: 0;
     height: 100%;
     /*padding:0;*/
     /*width:100%;*/
@@ -129,6 +140,11 @@ form[data-form-type="login"], form[data-form-type="register"] {
 form[data-form-type="login"] {
     height: 300px;
     margin-top: -150px;
+}
+
+form[data-form-type="register"] {
+    height: 340px;
+    margin-top: -170px;
 }
 
 .forum-node .panel-body{

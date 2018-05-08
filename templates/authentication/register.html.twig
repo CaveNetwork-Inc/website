@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+{% block body %}
+    <main class="container-fluid">
+        {{ form_start(register_form, {'attr': {'class': 'col-xs-12 col-md-4 col-md-offset-4', 'data-form-type': 'register'} }) }}
+        <h2 class="text-center">
+            <bold>Cave</bold>
+            Network Registration
+        </h2>
+        {{ form_widget(register_form) }}
+        {{ form_end(register_form) }}
+    </main>
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        (() => {
+            {#{% if error %}#}
+            {#var error = '{{ error.messageKey|trans(error.messageData, 'security') }}';#}
+            {#show_notification(error, 'danger');#}
+        {#{% endif %}#}
+        })();
+    </script>
+{% endblock %}

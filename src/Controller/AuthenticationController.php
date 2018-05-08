@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\User;
+use App\Form\UserFormType;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
@@ -41,7 +42,22 @@ class AuthenticationController extends Controller
      * @Route("/register", name="register")
      */
     public function registerAction(Request $request){
+        $user = new User();
+        $form = $this->createForm(UserFormType::class, $user);
 
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid()){
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($user);
+            $em->flush();
+            return $this->redirectToRoute('login');
+        }
+        return $this->render('authentication/register.html.twig', [
+            'controller_name' => 'AuthenticationController',
+            'action' => 'register',
+            'register_form' => $form->createView()
+        ]);
     }
 
     /**
